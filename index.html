@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahamed Hafeel | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  <link rel="icon" href="https://github.com/ahmdhafee.png">
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+    .typing { border-right: 2px solid #00A8E8; white-space: nowrap; overflow: hidden; }
+    section { scroll-margin-top: 80px; }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+
+  <!-- Navigation / Menu Bar -->
+<header class="fixed w-full z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6 md:px-0">
+      <!-- Logo -->
+      <a href="#hero" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Ahamed Hafeel</a>
+  
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-8 font-medium">
+        <a href="#about" class="nav-link text-gray-200 hover:text-blue-400">About</a>
+        <a href="#skills" class="nav-link text-gray-200 hover:text-blue-400">Skills</a>
+        <a href="#projects" class="nav-link text-gray-200 hover:text-blue-400">Projects</a>
+        <a href="#experience" class="nav-link text-gray-200 hover:text-blue-400">Experience</a>
+        <a href="#tech" class="nav-link text-gray-200 hover:text-blue-400">Tech Stack</a>
+        <a href="#contact" class="nav-link text-gray-200 hover:text-blue-400">Contact</a>
+      </nav>
+  
+      <!-- Mobile Hamburger Menu -->
+      <div class="md:hidden flex items-center">
+        <button id="menu-btn" class="text-gray-200 focus:outline-none relative w-8 h-8">
+          <span class="block w-full h-0.5 bg-gray-200 mb-1 transition-all duration-300"></span>
+          <span class="block w-full h-0.5 bg-gray-200 mb-1 transition-all duration-300"></span>
+          <span class="block w-full h-0.5 bg-gray-200 transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-900">
+      <nav class="flex flex-col space-y-3 py-6 px-6">
+        <a href="#about" class="text-gray-200 hover:text-blue-400">About</a>
+        <a href="#skills" class="text-gray-200 hover:text-blue-400">Skills</a>
+        <a href="#projects" class="text-gray-200 hover:text-blue-400">Projects</a>
+        <a href="#experience" class="text-gray-200 hover:text-blue-400">Experience</a>
+        <a href="#tech" class="text-gray-200 hover:text-blue-400">Tech Stack</a>
+        <a href="#contact" class="text-gray-200 hover:text-blue-400">Contact</a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Script for Hamburger & Scroll Effects -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.querySelectorAll('.nav-link');
+  
+    // Mobile toggle
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.classList.toggle('open');
+    });
+  
+    // Change navbar background on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-gray-900', 'shadow-lg');
+      } else {
+        navbar.classList.remove('bg-gray-900', 'shadow-lg');
+      }
+    });
+  
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+      });
+    });
+  
+    // Active link highlight on scroll
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + 200;
+      navLinks.forEach(link => {
+        const section = document.querySelector(link.getAttribute('href'));
+        if (section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
+          navLinks.forEach(l => l.classList.remove('text-blue-400'));
+          link.classList.add('text-blue-400');
+        }
+      });
+    });
+  </script>
+  
+  <style>
+    /* Hamburger animation */
+    #menu-btn.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    #menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    #menu-btn.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  </style>
+  
+
+ <!-- Hero Section -->
+<section id="hero" class="relative h-screen bg-gray-900 flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1950&q=80" alt="Hero Background" class="w-full h-full object-cover opacity-30">
+      <div class="absolute inset-0 bg-gray-900/70"></div>
+    </div>
+  
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center text-white max-w-3xl px-6">
+      <!-- Profile Photo -->
+      <img src="https://github.com/ahmdhafee.png" alt="Profile Photo" class="w-32 h-32 rounded-full mx-auto border-4 border-blue-400 mb-6 shadow-lg animate-bounce">
+  
+      <!-- Greeting -->
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 fade-in" style="animation-delay: 0.3s;">Hi 👋, I'm <span class="text-blue-400">Ahamed Hafeel</span></h1>
+  
+      <!-- Typing Roles Animation -->
+      <h2 class="text-xl md:text-2xl text-gray-300 mb-6">
+        <span id="typed-text"></span>
+        <span class="blinking-cursor">|</span>
+      </h2>
+  
+      <!-- Hero Buttons -->
+      <div class="flex justify-center gap-6 mt-4 fade-in" style="animation-delay: 1s;">
+        <a href="#projects" class="bg-blue-400 text-gray-900 font-semibold py-3 px-6 rounded-lg hover:bg-blue-500 transition transform hover:-translate-y-1">View Projects</a>
+        <a href="#contact" class="border border-blue-400 text-blue-400 font-semibold py-3 px-6 rounded-lg hover:bg-blue-400 hover:text-gray-900 transition transform hover:-translate-y-1">Contact Me</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Typed.js for animated roles -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    const typed = new Typed('#typed-text', {
+      strings: [
+        'IT Student', 
+        'Full-Stack Developer', 
+        'AI & Cloud Enthusiast', 
+        'Problem Solver', 
+        'Always Learning'
+      ],
+      typeSpeed: 60,
+      backSpeed: 40,
+      backDelay: 2000,
+      loop: true
+    });
+  </script>
+  
+  <!-- Animations -->
+  <style>
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  
+    /* Blinking cursor */
+    .blinking-cursor {
+      font-weight: 100;
+      font-size: 1.2em;
+      color: #00A8E8;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+  </style>
+  
+  <!-- About Me -->
+  <section id="about" class="py-20 max-w-5xl mx-auto px-4 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-8 text-blue-400">About Me</h2>
+    <p class="text-center mb-8 text-lg">
+      Passionate IT student from Sri Lanka skilled in programming, database management, and web development. I enjoy building systems that solve real problems and exploring AI, cloud computing, and automation.
+    <!-- Tech Stack Section -->
+<section id="tech" class="py-20 fade-in bg-gray-900">
+    <h2 class="text-4xl font-bold text-center mb-12 text-blue-400">Tech Stack & Tools</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 px-4 text-center">
+      
+      <!-- Languages -->
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=js" class="mx-auto mb-2 w-16 h-16" alt="JavaScript">
+        <p>JavaScript</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=ts" class="mx-auto mb-2 w-16 h-16" alt="TypeScript">
+        <p>TypeScript</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=java" class="mx-auto mb-2 w-16 h-16" alt="Java">
+        <p>Java</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=python" class="mx-auto mb-2 w-16 h-16" alt="Python">
+        <p>Python</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=cpp" class="mx-auto mb-2 w-16 h-16" alt="C++">
+        <p>C++</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=cs" class="mx-auto mb-2 w-16 h-16" alt="C#">
+        <p>C#</p>
+      </div>
+  
+      <!-- Web Technologies -->
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=html" class="mx-auto mb-2 w-16 h-16" alt="HTML">
+        <p>HTML</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=css" class="mx-auto mb-2 w-16 h-16" alt="CSS">
+        <p>CSS</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=react" class="mx-auto mb-2 w-16 h-16" alt="React">
+        <p>React</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=nextjs" class="mx-auto mb-2 w-16 h-16" alt="Next.js">
+        <p>Next.js</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=nodejs" class="mx-auto mb-2 w-16 h-16" alt="Node.js">
+        <p>Node.js</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=express" class="mx-auto mb-2 w-16 h-16" alt="Express">
+        <p>Express</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=php" class="mx-auto mb-2 w-16 h-16" alt="PHP">
+        <p>PHP</p>
+      </div>
+  
+      <!-- Databases -->
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=mysql" class="mx-auto mb-2 w-16 h-16" alt="MySQL">
+        <p>MySQL</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=mongodb" class="mx-auto mb-2 w-16 h-16" alt="MongoDB">
+        <p>MongoDB</p>
+      </div>
+  
+      <!-- Cloud -->
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=aws" class="mx-auto mb-2 w-16 h-16" alt="AWS">
+        <p>AWS</p>
+      </div>
+  
+      <!-- Tools -->
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=git" class="mx-auto mb-2 w-16 h-16" alt="Git">
+        <p>Git</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=github" class="mx-auto mb-2 w-16 h-16" alt="GitHub">
+        <p>GitHub</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=vscode" class="mx-auto mb-2 w-16 h-16" alt="VS Code">
+        <p>VS Code</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=linux" class="mx-auto mb-2 w-16 h-16" alt="Linux">
+        <p>Linux</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=figma" class="mx-auto mb-2 w-16 h-16" alt="Figma">
+        <p>Figma</p>
+      </div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition transform hover:-translate-y-2 shadow">
+        <img src="https://skillicons.dev/icons?i=ps,ai" class="mx-auto mb-2 w-16 h-16" alt="Photoshop & Illustrator">
+        <p>Photoshop & Illustrator</p>
+      </div>
+  
+    </div>
+  </section>
+  
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="bg-gray-800 py-20 fade-in">
+    <h2 class="text-4xl font-bold text-center mb-12 text-blue-400">What I Do</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+      <div class="bg-gray-700 p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <h3 class="text-xl font-semibold mb-2 text-blue-300">Web Development</h3>
+        <p>Building responsive and interactive websites using React, Next.js, Tailwind, Node.js, and PHP.</p>
+      </div>
+      <div class="bg-gray-700 p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <h3 class="text-xl font-semibold mb-2 text-blue-300">AI & Automation</h3>
+        <p>Creating intelligent solutions with Python, AI agents, and data automation workflows.</p>
+      </div>
+      <div class="bg-gray-700 p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <h3 class="text-xl font-semibold mb-2 text-blue-300">Databases</h3>
+        <p>Designing and optimizing databases in MySQL and MongoDB for efficient data management.</p>
+      </div>
+      <div class="bg-gray-700 p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <h3 class="text-xl font-semibold mb-2 text-blue-300">Cloud & Deployment</h3>
+        <p>Managing Linux servers, deploying apps, and working with AWS basics and Git version control.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="bg-slate-900 py-20 px-4 text-white">
+
+    <h2 class="text-4xl font-bold text-center text-cyan-400 mb-16">
+      🚀 Featured Project
+    </h2>
+  
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+  
+      <!-- Project Image -->
+      <div class="lg:w-1/2 relative group">
+        <img 
+          src="https://biglysales.com/wp-content/uploads/2024/03/DALL%C2%B7E-2024-03-29-09.19.06-Create-a-wide-banner-illustration-that-showcases-AI-technology-transforming-ecommerce.-The-image-should-feature-various-components-such-as-personalize-1.webp"
+          class="rounded-2xl shadow-xl border border-slate-700 w-full
+                 transition duration-500 group-hover:scale-105" />
+  
+        <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-transparent 
+                    opacity-0 group-hover:opacity-100 transition duration-500 rounded-2xl"></div>
+      </div>
+  
+      <!-- Project Details -->
+      <div class="lg:w-1/2">
+        <h3 class="text-3xl font-bold mb-4 text-white">
+          AI-Based E-Commerce System
+        </h3>
+  
+        <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+          A smart e-commerce web application built using the MERN stack that uses 
+          Artificial Intelligence to recommend products based on user behavior, 
+          browsing history, and preferences. Includes authentication, admin dashboard, 
+          and secure payment integration.
+        </p>
+  
+        <!-- Tech Stack Badges -->
+        <div class="flex flex-wrap gap-3 mb-8">
+          <span class="px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 rounded-full text-sm">MongoDB</span>
+          <span class="px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 rounded-full text-sm">Express.js</span>
+          <span class="px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 rounded-full text-sm">React.js</span>
+          <span class="px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 rounded-full text-sm">Node.js</span>
+          <span class="px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 rounded-full text-sm">JWT Auth</span>
+          <span class="px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 rounded-full text-sm">AI Recommendations</span>
+        </div>
+  
+        <!-- Buttons -->
+        <div class="flex gap-5">
+          <a href="#" 
+             class="px-6 py-3 bg-cyan-500 text-black font-semibold rounded-xl 
+                    hover:bg-cyan-600 transition transform hover:-translate-y-1">
+            Live Demo
+          </a>
+  
+          <a href="#" 
+             class="px-6 py-3 border border-cyan-400 text-cyan-400 font-semibold rounded-xl
+                    hover:bg-cyan-400 hover:text-black transition transform hover:-translate-y-1">
+            View Code
+          </a>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+  <section id="experience" class="bg-slate-900 py-20 px-4 text-white">
+
+    <h2 class="text-4xl font-bold text-center text-cyan-400 mb-16">
+      💼 My Experience
+    </h2>
+  
+    <div class="relative max-w-6xl mx-auto">
+  
+      <!-- Vertical Line -->
+      <div class="hidden md:block absolute left-1/2 top-0 w-[3px] h-full bg-slate-700 -translate-x-1/2"></div>
+  
+      <!-- Experience 1 -->
+      <div class="flex flex-col md:flex-row items-center mb-16 group">
+        
+        <!-- Left -->
+        <div class="md:w-1/2 md:text-right md:pr-12">
+          <div class="bg-slate-800 p-6 rounded-2xl shadow-lg border border-slate-700 
+                      transition transform group-hover:-translate-y-2 duration-300">
+            <h3 class="text-2xl font-semibold">Graphic Designer</h3>
+            <p class="text-sm text-slate-400 mt-1">MAAS Graphics · Kinniya</p>
+            <span class="text-xs text-cyan-400 font-semibold block mt-1">Dec 2023 – Jul 2024</span>
+            <p class="mt-4 text-slate-300 leading-relaxed">
+              Designed creative branding, social media posts, marketing banners and visual content. 
+              Worked with clients and ensured high-quality creative delivery.
+            </p>
+          </div>
+        </div>
+  
+        <!-- Center Dot -->
+        <div class="hidden md:flex w-5 h-5 bg-cyan-400 rounded-full border-4 border-slate-900"></div>
+  
+        <!-- Right spacer -->
+        <div class="md:w-1/2"></div>
+      </div>
+  
+      <!-- Experience 2 -->
+      <div class="flex flex-col md:flex-row items-center mb-16 group">
+        
+        <!-- Left spacer -->
+        <div class="md:w-1/2"></div>
+  
+        <!-- Center Dot -->
+        <div class="hidden md:flex w-5 h-5 bg-cyan-400 rounded-full border-4 border-slate-900"></div>
+  
+        <!-- Right -->
+        <div class="md:w-1/2 md:pl-12">
+          <div class="bg-slate-800 p-6 rounded-2xl shadow-lg border border-slate-700 
+                      transition transform group-hover:-translate-y-2 duration-300">
+            <h3 class="text-2xl font-semibold">Software Engineering Student</h3>
+            <p class="text-sm text-slate-400 mt-1">ICBT Campus</p>
+            <span class="text-xs text-cyan-400 font-semibold block mt-1">Aug 2024 – Present</span>
+            <p class="mt-4 text-slate-300 leading-relaxed">
+              Learning full-stack development, AI systems, database design and cloud fundamentals. 
+              Completed multiple academic projects and real-world simulations.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Experience 3 -->
+      <div class="flex flex-col md:flex-row items-center group">
+  
+        <!-- Left -->
+        <div class="md:w-1/2 md:text-right md:pr-12">
+          <div class="bg-slate-800 p-6 rounded-2xl shadow-lg border border-slate-700 
+                      transition transform group-hover:-translate-y-2 duration-300">
+            <h3 class="text-2xl font-semibold">IT Diploma Student</h3>
+            <p class="text-sm text-slate-400 mt-1">ESOFT Metro Campus</p>
+            <span class="text-xs text-cyan-400 font-semibold block mt-1">Sep 2022 – Sep 2023</span>
+            <p class="mt-4 text-slate-300 leading-relaxed">
+              Built strong foundations in programming, networking and system analysis. 
+              Developed web mini-projects and database-driven applications.
+            </p>
+          </div>
+        </div>
+  
+        <!-- Center Dot -->
+        <div class="hidden md:flex w-5 h-5 bg-cyan-400 rounded-full border-4 border-slate-900"></div>
+  
+        <!-- Right spacer -->
+        <div class="md:w-1/2"></div>
+      </div>
+  
+    </div>
+  
+  </section>
+  
+  <!-- Contact Section -->
+<section id="contact" class="bg-gray-900 text-white py-20 fade-in">
+    <h2 class="text-4xl font-bold mb-12 text-center text-blue-400">Let’s Connect</h2>
+    <p class="text-center text-lg mb-12 max-w-2xl mx-auto">
+      Whether it’s project collaboration, internship opportunities, or just a friendly tech chat, feel free to reach out!
+    </p>
+  
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+      
+      <!-- Email Card -->
+      <div class="bg-gray-800 rounded-xl p-8 text-center shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+        <img src="https://img.icons8.com/ios-filled/50/00A8E8/new-post.png" class="mx-auto mb-4 w-12 h-12" alt="Email Icon">
+        <h3 class="text-xl font-semibold mb-2 text-blue-300">Email</h3>
+        <p class="text-gray-300 mb-4">ahamedhafeel29@gmail.com</p>
+        <a href="mailto:ahamedhafeel29@gmail.com" class="inline-block bg-blue-400 text-gray-900 font-bold py-2 px-6 rounded-lg hover:bg-blue-500 transition">Send Email</a>
+      </div>
+  
+      <!-- LinkedIn Card -->
+      <div class="bg-gray-800 rounded-xl p-8 text-center shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+        <img src="https://img.icons8.com/ios-filled/50/00A8E8/linkedin.png" class="mx-auto mb-4 w-12 h-12" alt="LinkedIn Icon">
+        <h3 class="text-xl font-semibold mb-2 text-blue-300">LinkedIn</h3>
+        <p class="text-gray-300 mb-4">Connect with me professionally</p>
+        <a href="https://www.linkedin.com/in/ahamed-hafeel-hafee144" target="_blank" class="inline-block bg-blue-400 text-gray-900 font-bold py-2 px-6 rounded-lg hover:bg-blue-500 transition">Connect</a>
+      </div>
+  
+      <!-- GitHub Card -->
+      <div class="bg-gray-800 rounded-xl p-8 text-center shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+        <img src="https://img.icons8.com/ios-filled/50/00A8E8/github.png" class="mx-auto mb-4 w-12 h-12" alt="GitHub Icon">
+        <h3 class="text-xl font-semibold mb-2 text-blue-300">GitHub</h3>
+        <p class="text-gray-300 mb-4">Check my projects & contributions</p>
+        <a href="https://github.com/ahmdhafee" target="_blank" class="inline-block bg-blue-400 text-gray-900 font-bold py-2 px-6 rounded-lg hover:bg-blue-500 transition">View GitHub</a>
+      </div>
+  
+    </div>
+  
+    <!-- Optional Social Icons -->
+    <div class="flex justify-center mt-12 space-x-6">
+      <a href="mailto:ahamedhafeel29@gmail.com" class="text-blue-400 hover:text-blue-500 transition text-3xl">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/ahamed-hafeel-hafee144" target="_blank" class="text-blue-400 hover:text-blue-500 transition text-3xl">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/ahmdhafee" target="_blank" class="text-blue-400 hover:text-blue-500 transition text-3xl">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="#" class="text-blue-400 hover:text-blue-500 transition text-3xl">
+        <i class="fa-brands fa-twitter"></i>
+      </a>
+    </div>
+  </section>
+  
+  <!-- Font Awesome CDN for Icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+    <p>© 2025 Ahamed Hafeel. Made with ❤️ and code.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Typing effect
+    const roles = ["IT Undergraduate", "Full-Stack Developer", "AI & Cloud Enthusiast", "Always Learning New Things"];
+    let i = 0, j = 0;
+    let currentRole = '';
+    let isDeleting = false;
+    const typingEl = document.getElementById('typing');
+
+    function type() {
+      if (!isDeleting && j <= roles[i].length) {
+        currentRole = roles[i].substring(0, j++);
+        typingEl.textContent = currentRole;
+        setTimeout(type, 120);
+      } else if (isDeleting && j >= 0) {
+        currentRole = roles[i].substring(0, j--);
+        typingEl.textContent = currentRole;
+        setTimeout(type, 60);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % roles.length;
+        setTimeout(type, 500);
+      }
+    }
+    type();
+
+    // Scroll animations
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+
+</body>
+</html>
